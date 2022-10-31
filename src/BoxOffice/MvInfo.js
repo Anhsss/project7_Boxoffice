@@ -1,9 +1,10 @@
 //import mv from '../JsonData/Movie.json'
-import './Movie.css' 
-import MvTimer from './MvTimer';
+//import './Movie.css' 
+//import MvTimer from './MvTimer';
 
 //useState Hook
 import { useEffect, useState, useRef } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 
 function MvInfo(probs) {
@@ -78,7 +79,6 @@ function MvInfo(probs) {
       <span className='span1'>{k}</span>
       <span className='span2'> {v}</span>
       </li>);
-      setMlis(lis);
   }
 
   //count 제어
@@ -143,12 +143,20 @@ function MvInfo(probs) {
   useEffect(()=>{
     console.log('useEffect 관련 state변수가 변경될때 실행')
   },[cntUpSt]);
-
+  const navigate = useNavigate();
+  const Click = (k) => {
+    const url = {
+      '홈으로' : '/'
+    }
+    navigate(url[k])
+  }
   return (
     <>
     <div className='mainDiv'>
     <h1>영화상세</h1>
+    
     <form className='MvForm' onSubmit={handleSubmit}>
+        <button onClick={()=>Click('홈으로')} className='home'>Home</button>
         <input type='text' ref={txtRef} placeholder='댓글을 입력하세요.' />
         <button type='submit'>등록</button>
         <button type='reset'>취소</button>
@@ -171,7 +179,6 @@ function MvInfo(probs) {
       </div>
       {/* <div className='mvList3'>{flag && <MvTimer/>}</div> */}
       <div className='mvList3' style={{'display':flag2}}>
-        <MvTimer/>
       </div>
     </>
   )

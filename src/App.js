@@ -1,5 +1,7 @@
 import BoxMv from "./BoxOffice/BoxMv";
 import BoxOffice from "./BoxOffice/BoxOffice";
+import MvInfo from "./BoxOffice/MvInfo";
+import Mv from './BoxOffice/Mv.css'
 import { Route, Routes} from "react-router-dom"
 function App() {
   return (
